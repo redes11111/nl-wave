@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>NL WAVE 🌊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Telegram WebApp -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+    <h1>NL WAVE 🌊</h1>
+    <p class="subtitle">Выбери волну и погружайся</p>
+
+    <div class="stations">
+      <button onclick="playRadio('love')">❤️ Love Radio</button>
+      <button onclick="playRadio('new')">⚡ Новое Радио</button>
+      <button onclick="playRadio('gaming')">🎮 Gaming Wave</button>
+      <button onclick="playRadio('night')">🌙 Night Vibe</button>
+      <button onclick="playRadio('hard')">🔥 Hard Mode</button>
+    </div>
+
+    <audio id="player" controls autoplay></audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
