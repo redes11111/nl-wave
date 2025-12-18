@@ -4,7 +4,7 @@ const now = document.getElementById("now");
 const stations = {
   love: {
     name: "Love Radio",
-    url: "http://net37.ru:8000/love_radio_net37ru.aac"
+    url: "https://icecast.vgtrk.cdnvideo.ru/loveradio_m.mp3"
   },
   new: {
     name: "Новое Радио",
@@ -12,7 +12,7 @@ const stations = {
   },
   power: {
     name: "Сила любви",
-    url: "https://stream.powerapp.com.tr/powerlove/mp3;type=mp3"
+    url: "https://listen.powerapp.com.tr/powerlove/abr/powerlove/128/chunks.m3u8"
   },
   night: {
     name: "Night Vibe",
