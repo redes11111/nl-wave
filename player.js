@@ -8,7 +8,7 @@ const stations = {
   },
   new: {
     name: "Новое Радио",
-    url: "https://stream.newradio.ru/novoe96.mp3"
+    url: "https://stream.newradio.ru/moscow.novoe.aacp"
   },
   gaming: {
     name: "Gaming Radio",
@@ -29,6 +29,10 @@ function playRadio(key) {
   if (!station) return;
 
   audio.src = station.url;
-  audio.play().catch(() => {});
+  audio.pause();
+  audio.load();
+  audio.play().catch((error) => {
+    console.error("Ошибка воспроизведения:", error);
+  });
   now.textContent = station.name;
 }
