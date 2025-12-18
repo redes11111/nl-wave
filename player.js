@@ -4,7 +4,7 @@ const now = document.getElementById("now");
 const stations = {
   love: {
     name: "Love Radio",
-    url: "https://stream.loveradio.ru/loveradio96.mp3"
+    url: "https://stream1.loveradio.ru/love128.mp3"
   },
   new: {
     name: "Новое Радио",
@@ -12,15 +12,15 @@ const stations = {
   },
   gaming: {
     name: "Gaming Radio",
-    url: "https://air.101.ru:8000/gaming_128"
+    url: "https://pub0101.101.ru/stream/pro/mp3/128/741960"
   },
   night: {
     name: "Night Vibe",
-    url: "https://streaming.radio.co/s88c9b1c98/listen"
+    url: "https://radio.plaza.one/mp3"
   },
   hard: {
     name: "Hard Mode",
-    url: "https://hardmode.fm/stream"
+    url: "https://stream.rcast.net/13988"
   }
 };
 
