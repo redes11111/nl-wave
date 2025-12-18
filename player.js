@@ -10,17 +10,17 @@ const stations = {
     name: "Новое Радио",
     url: "https://stream.newradio.ru/moscow.novoe.aacp"
   },
-  europa: {
-    name: "Europa Plus",
-    url: "http://emgregion.hostingradio.ru:8064/moscow.europaplus.mp3"
+  power: {
+    name: "Сила любви",
+    url: "https://listen.powerapp.com.tr/powerlove/abr/powerlove/128/chunks.m3u8"
   },
-  russkoe: {
-    name: "Russkoe Radio",
-    url: "http://dfm.hostingradio.ru/rusradio128.mp3"
+  night: {
+    name: "Night Vibe",
+    url: "https://radio.plaza.one/mp3"
   },
-  retro: {
-    name: "Retro FM",
-    url: "http://retroserver.streamr.ru:8043/retro256.mp3"
+  hard: {
+    name: "Hard Mode",
+    url: "https://stream.rcast.net/13988"
   }
 };
 
