@@ -6,31 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="default">
-  <canvas id="visualizer"></canvas>
+<body>
 
-  <div class="app">
-    <h1>NL WAVE 🌊</h1>
-    <p class="subtitle">Выбери волну — остальное сделает музыка</p>
+<div class="app">
+  <h1>NL WAVE 🌊</h1>
+  <p class="subtitle">Выбери волну — остальное сделает музыка</p>
 
-    <div class="stations">
-      <button onclick="playRadio('love')">Love Radio</button>
-      <button onclick="playRadio('new')">Новое Радио</button>
-      <button onclick="playRadio('tht')">THT Music Radio</button>
-      <button onclick="playRadio('night')">Night Vibe</button>
-      <button onclick="playRadio('rekord')">Радио Рекорд</button>
-    </div>
-
-    <div class="now">🔊 Сейчас играет: <span id="now">—</span></div>
-
-    <div class="theme-switch">
-      <button onclick="setTheme('default')">Default</button>
-      <button onclick="setTheme('cyberpunk')">Cyberpunk</button>
-    </div>
+  <div class="stations">
+    <button onclick="playRadio('love')">Love Radio</button>
+    <button onclick="playRadio('new')">Новое Радио</button>
+    <button onclick="playRadio('tht')">THT Music Radio</button>
+    <button onclick="playRadio('night')">Night Vibe</button>
+    <button onclick="playRadio('rekord')">Радио Рекорд</button>
   </div>
 
-  <audio id="audio"></audio>
+  <div class="now">🔊 Сейчас играет: <span id="now">—</span></div>
+  <div id="player"></div> <!-- Здесь будет плеер -->
+</div>
 
-  <script src="player.js"></script>
+<audio id="audio"></audio>
+
+<script src="player.js"></script>
 </body>
 </html>
