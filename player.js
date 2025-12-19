@@ -4,7 +4,7 @@ const now = document.getElementById("now");
 const stations = {
   love: {
     name: "Love Radio",
-    url: "https://stream2.loveradio.ru/stream.mp3"
+    url: "http://microit.n340.com:9000/VgMv0WV17ZVx1uuo_12_love_128_reg_44"
   },
   new: {
     name: "Новое Радио",
