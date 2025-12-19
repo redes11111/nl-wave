@@ -13,17 +13,18 @@
   <p class="subtitle">Выбери волну — остальное сделает музыка</p>
 
   <div class="stations">
-    <button onclick="playRadio('love')">Love Radio</button>
-    <button onclick="playRadio('new')">Новое Радио</button>
-    <button onclick="playRadio('tht')">THT Music Radio</button>
-    <button onclick="playRadio('night')">Night Vibe</button>
-    <button onclick="playRadio('rekord')">Радио Рекорд</button>
+    <button onclick="playRadio('record')">🔥 Radio Record — EDM</button>
+    <button onclick="playRadio('new')">🎧 Новое Радио</button>
+    <button onclick="playRadio('techno')">⚡ TechnoBase.FM</button>
+    <button onclick="playRadio('night')">🌙 Night Vibe</button>
   </div>
 
-  <div class="now">🔊 Сейчас играет: <span id="now">—</span></div>
+  <div class="now">
+    🔊 Сейчас играет: <span id="now">—</span>
+  </div>
 </div>
 
-<audio id="audio"></audio>
+<audio id="audio" crossorigin="anonymous"></audio>
 
 <script src="player.js"></script>
 </body>
