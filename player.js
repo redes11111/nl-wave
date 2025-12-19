@@ -4,7 +4,13 @@ const now = document.getElementById("now");
 const stations = {
   love: {
     name: "Love Radio",
-    url: "http://microit.n340.com:9000/VgMv0WV17ZVx1uuo_12_love_128_reg_44"
+    url: "
+      love: {
+  name: "Love Radio",
+  urls: [
+    "http://microit.n340.com:9000/...",
+    "https://backup-stream.example.com/love.mp3"
+  ]
   },
   new: {
     name: "Новое Радио",
