@@ -2,41 +2,33 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>NL WAVE 🎄</title>
+  <title>NL WAVE 🌊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ❄️ Снег -->
-<div class="snow"></div>
-
-<!-- Новогодняя шапочка -->
-<div class="santa-hat"></div>
-
-<!-- Мини-персонажи -->
-<div class="character character1"></div>
-<div class="character character2"></div>
-<div class="character character3"></div>
-
 <div class="app">
-  <h1>NL WAVE 🎄</h1>
+  <h1>NL WAVE 🌊</h1>
   <p class="subtitle">Выбери волну — остальное сделает музыка</p>
 
   <div class="stations">
-    <button onclick="playRadio('edm')">🔥 EDM Hits</button>
-    <button onclick="playRadio('new')">Новое Радио</button>
-    <button onclick="playRadio('techno')">TechnoBase.FM</button>
-    <button onclick="playRadio('night')">Night Vibe</button>
+    <button onclick="playLocal('local')">🎵 Local</button>
+    <button onclick="playLocal('love')">❤️ Love Radio</button>
+    <button onclick="playRadio('new')">📻 Новое Радио</button>
+    <button onclick="playRadio('night')">🌌 Night Vibe</button>
+    <button onclick="playRadio('techno')">⚡ TechnoBase.FM</button>
   </div>
 
-  <div class="now">
-    🔊 Сейчас играет: <span id="now">—</span>
+  <div class="controls" id="controls">
+    <button onclick="prevTrack()">⏮</button>
+    <button onclick="nextTrack()">⏭</button>
   </div>
+
+  <div class="now">🔊 Сейчас играет: <span id="now">—</span></div>
 </div>
 
 <audio id="audio"></audio>
-
 <script src="player.js"></script>
 </body>
 </html>
