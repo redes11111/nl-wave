@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: #06020d;
+  background: radial-gradient(circle at top, #2b1a4d, #0b0716);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,71 +14,17 @@ body {
   overflow: hidden;
 }
 
-/* Северное сияние */
-.aurora {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(120deg,
-    rgba(0,255,200,0.15),
-    rgba(120,0,255,0.15),
-    rgba(0,120,255,0.15)
-  );
-  animation: aurora 12s ease-in-out infinite alternate;
-  z-index: -2;
-}
-
-@keyframes aurora {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(90deg); }
-}
-
-/* Снег */
-.snow::before {
-  content: "❄ ❅ ❄ ❅ ❄ ❅ ❄ ❅";
-  position: fixed;
-  width: 200%;
-  top: -10%;
-  animation: snow 10s linear infinite;
-  opacity: 0.6;
-  z-index: -1;
-}
-
-@keyframes snow {
-  to { transform: translateY(120vh); }
-}
-
-/* Карточка */
 .app {
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(14px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
   padding: 30px;
-  border-radius: 22px;
+  border-radius: 20px;
   width: 90%;
   max-width: 420px;
   text-align: center;
-  box-shadow: 0 0 40px rgba(140,100,255,0.5);
+  box-shadow: 0 0 40px rgba(128, 90, 213, 0.4);
   position: relative;
-}
-
-/* Новогодняя шапка */
-.hat {
-  position: absolute;
-  left: -10px;
-  top: -20px;
-  width: 60px;
-  height: 40px;
-  background: red;
-  border-radius: 40px 40px 10px 10px;
-}
-.hat::after {
-  content: "";
-  position: absolute;
-  right: -10px;
-  top: 25px;
-  width: 15px;
-  height: 15px;
-  background: white;
-  border-radius: 50%;
+  z-index: 2;
 }
 
 h1 {
@@ -87,7 +33,7 @@ h1 {
 }
 
 .subtitle {
-  opacity: 0.85;
+  opacity: 0.8;
   margin-bottom: 20px;
 }
 
@@ -101,24 +47,39 @@ h1 {
   color: #fff;
   font-size: 16px;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .stations button:hover {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .now {
-  margin-top: 18px;
+  margin-top: 20px;
   opacity: 0.9;
 }
 
-.characters {
-  margin-top: 15px;
-  font-size: 22px;
-  animation: chars 2s ease-in-out infinite alternate;
+/* ❄️ СНЕГ */
+.snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 100px 80px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 200px 120px, #fff, transparent),
+    radial-gradient(2px 2px at 300px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 400px 100px, #fff, transparent);
+  animation: snow 12s linear infinite;
+  opacity: 0.6;
+  z-index: 1;
 }
 
-@keyframes chars {
-  from { transform: translateX(-5px); }
-  to { transform: translateX(5px); }
+@keyframes snow {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(100vh);
+  }
 }
