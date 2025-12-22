@@ -2,33 +2,36 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>NL WAVE 🌊</title>
+  <title>NL WAVE 🎄</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ❄️ Снег -->
+<div class="aurora"></div>
 <div class="snow"></div>
 
 <div class="app">
-  <h1>NL WAVE 🌊</h1>
+  <div class="hat"></div>
+
+  <h1>🎄 NL WAVE</h1>
   <p class="subtitle">Выбери волну — остальное сделает музыка</p>
 
   <div class="stations">
-    <button onclick="playRadio('edm')">🔥 EDM Hits</button>
-    <button onclick="playRadio('new')">Новое Радио</button>
-    <button onclick="playRadio('techno')">TechnoBase.FM</button>
-    <button onclick="playRadio('night')">Night Vibe</button>
+    <button onclick="playRadio('festival')">🔥 Festival EDM</button>
+    <button onclick="playRadio('bigroom')">💣 Bass & Big Room</button>
+    <button onclick="playRadio('new')">🎵 Новое Радио</button>
+    <button onclick="playRadio('night')">🌙 Night Vibe</button>
   </div>
 
-  <div class="now">
-    🔊 Сейчас играет: <span id="now">—</span>
+  <div class="now">🔊 Сейчас играет: <span id="now">—</span></div>
+
+  <div class="characters">
+    🎮 ⛄ 🎮
   </div>
 </div>
 
 <audio id="audio"></audio>
-
 <script src="player.js"></script>
 </body>
 </html>
