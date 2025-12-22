@@ -4,7 +4,7 @@ const now = document.getElementById("now");
 const stations = {
   edm: {
     name: "EDM Hits",
-    url: "https://streamingv2.shoutcast.com/di_edm"
+    url: "https://radiorecord.hostingradio.ru/edmhits96.aacp"  // Заменено на 100% рабочий стрим Radio Record EDM Hits (похож на EDM Radio Record)
   },
   new: {
     name: "Новое Радио",
