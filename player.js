@@ -2,10 +2,9 @@ const audio = document.getElementById("audio");
 const now = document.getElementById("now");
 
 const stations = {
-  record: {
-    name: "EDM — Radio Record",
-    // ⚠️ В Telegram НЕ работает
-    url: "https://air.radiorecord.ru:8101/rr_edm_320"
+  edm: {
+    name: "EDM Hits",
+    url: "https://streamingv2.shoutcast.com/di_edm"
   },
   new: {
     name: "Новое Радио",
@@ -29,10 +28,11 @@ function playRadio(key) {
   audio.src = station.url;
   audio.load();
 
-  audio.play().then(() => {
-    now.textContent = station.name;
-  }).catch(err => {
-    alert("❌ В Telegram этот поток заблокирован");
-    console.error(err);
-  });
+  audio.play()
+    .then(() => {
+      now.textContent = station.name;
+    })
+    .catch(() => {
+      alert("❌ Этот поток заблокирован в Telegram");
+    });
 }
