@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
@@ -14,13 +14,24 @@ body {
 }
 
 .app {
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(12px);
   padding: 30px;
   border-radius: 20px;
   width: 90%;
   max-width: 420px;
   text-align: center;
+  box-shadow: 0 0 40px rgba(128, 90, 213, 0.4);
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.subtitle {
+  opacity: 0.8;
+  margin-bottom: 20px;
 }
 
 .stations button {
@@ -33,4 +44,14 @@ body {
   color: #fff;
   font-size: 16px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.stations button:hover {
+  transform: scale(1.03);
+}
+
+.now {
+  margin-top: 20px;
+  opacity: 0.9;
 }
