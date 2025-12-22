@@ -1,48 +1,18 @@
-* {
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(0deg, #001f3f, #000033, #003366, #006666, #009966); /* Северное сияние цвета */
-  background-size: 400% 400%;
-  animation: aurora 15s ease infinite; /* Анимация сияния */
+  background: #0b0716;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
-  overflow: hidden;
-}
-
-@keyframes aurora {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  font-family: system-ui, sans-serif;
 }
 
 .app {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(12px);
-  padding: 30px;
-  border-radius: 20px;
   width: 90%;
   max-width: 420px;
   text-align: center;
-  box-shadow: 0 0 40px rgba(128, 90, 213, 0.4);
-  position: relative;
-  z-index: 2;
-}
-
-h1 {
-  margin: 0;
-  font-size: 32px;
-}
-
-.subtitle {
-  opacity: 0.8;
-  margin-bottom: 20px;
 }
 
 .stations button {
@@ -51,127 +21,17 @@ h1 {
   padding: 14px;
   border: none;
   border-radius: 14px;
-  background: linear-gradient(135deg, #7c5cff, #b388ff);
+  background: #7c5cff;
   color: #fff;
   font-size: 16px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
-.stations button:hover {
-  transform: scale(1.03);
+.controls {
+  display: none;
+  margin-top: 10px;
 }
 
-.now {
-  margin-top: 20px;
-  opacity: 0.9;
-}
-
-/* ❄️ СНЕГ (больше снежинок) */
-.snow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-    radial-gradient(2px 2px at 100px 80px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 200px 120px, #fff, transparent),
-    radial-gradient(2px 2px at 300px 40px, #fff, transparent),
-    radial-gradient(1px 1px at 400px 100px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 50px 150px, #fff, transparent),
-    radial-gradient(2px 2px at 150px 200px, #fff, transparent),
-    radial-gradient(1px 1px at 250px 50px, #fff, transparent),
-    radial-gradient(2px 2px at 350px 180px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 450px 90px, #fff, transparent); /* Добавлено больше */
-  animation: snow 12s linear infinite;
-  opacity: 0.6;
-  z-index: 1;
-}
-
-@keyframes snow {
-  from {
-    transform: translateY(-100px);
-  }
-  to {
-    transform: translateY(100vh);
-  }
-}
-
-/* Красная новогодняя шапочка слева на плеере */
-.santa-hat {
-  position: absolute;
-  top: 10px;
-  left: -30px;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 40px solid red;
-  transform: rotate(-45deg);
-  z-index: 3;
-}
-
-.santa-hat::after {
-  content: '';
-  position: absolute;
-  top: 30px;
-  left: -10px;
-  width: 15px;
-  height: 15px;
-  background: white;
-  border-radius: 50%;
-}
-
-/* Мини-персонажи (из игр, лепят снеговика, анимированные) */
-.character {
-  position: fixed;
-  bottom: 20px;
-  width: 30px;
-  height: 30px;
-  background: #fff;
-  border-radius: 50%;
-  animation: buildSnowman 5s infinite;
-  z-index: 1;
-}
-
-.character::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 5px;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  border-radius: 50%;
-}
-
-.character::after {
-  content: '';
-  position: absolute;
-  top: -35px;
-  left: 10px;
-  width: 10px;
-  height: 10px;
-  background: #fff;
-  border-radius: 50%;
-}
-
-.character1 {
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.character2 {
-  left: 40%;
-  animation-delay: 1s;
-}
-
-.character3 {
-  left: 70%;
-  animation-delay: 2s;
-}
-
-@keyframes buildSnowman {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.controls button {
+  font-size: 22px;
+  margin: 0 10px;
 }
