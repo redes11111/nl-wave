@@ -8,15 +8,18 @@
 </head>
 <body>
 
+<!-- ❄️ Снег -->
+<div class="snow"></div>
+
 <div class="app">
   <h1>NL WAVE 🌊</h1>
   <p class="subtitle">Выбери волну — остальное сделает музыка</p>
 
   <div class="stations">
-    <button onclick="playRadio('record')">🔥 EDM — Radio Record</button>
-    <button onclick="playRadio('new')">🎧 Новое Радио</button>
-    <button onclick="playRadio('techno')">⚡ TechnoBase.FM</button>
-    <button onclick="playRadio('night')">🌙 Night Vibe</button>
+    <button onclick="playRadio('edm')">🔥 EDM Hits</button>
+    <button onclick="playRadio('new')">Новое Радио</button>
+    <button onclick="playRadio('techno')">TechnoBase.FM</button>
+    <button onclick="playRadio('night')">Night Vibe</button>
   </div>
 
   <div class="now">
@@ -24,7 +27,7 @@
   </div>
 </div>
 
-<audio id="audio" controls playsinline></audio>
+<audio id="audio"></audio>
 
 <script src="player.js"></script>
 </body>
