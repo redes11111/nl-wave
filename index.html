@@ -8,27 +8,24 @@
 </head>
 <body>
 
+<div class="snow"></div>
+
 <div class="app">
-  <h1>NL WAVE 🌊</h1>
-  <p class="subtitle">Выбери волну — остальное сделает музыка</p>
+  <h1 class="logo">🎄 NL WAVE</h1>
+  <p class="subtitle">Зимний вайб • музыка без остановки</p>
 
   <div class="stations">
-    <button onclick="playLocal('local')">🎵 Local</button>
-    <button onclick="playLocal('love')">❤️ Love Radio</button>
-    <button onclick="playRadio('new')">📻 Новое Радио</button>
-    <button onclick="playRadio('night')">🌌 Night Vibe</button>
-    <button onclick="playRadio('techno')">⚡ TechnoBase.FM</button>
+    <button onclick="playPlaylist('local')">Local Mix</button>
+    <button onclick="playPlaylist('love')">Love Radio (Local)</button>
   </div>
 
-  <div class="controls" id="controls">
-    <button onclick="prevTrack()">⏮</button>
-    <button onclick="nextTrack()">⏭</button>
+  <div class="now">
+    🔊 Сейчас играет: <span id="now">—</span>
   </div>
-
-  <div class="now">🔊 Сейчас играет: <span id="now">—</span></div>
 </div>
 
 <audio id="audio"></audio>
+
 <script src="player.js"></script>
 </body>
 </html>
