@@ -1,69 +1,53 @@
 const audio = document.getElementById("audio");
 const now = document.getElementById("now");
-const controls = document.getElementById("controls");
 
-let playlist = [];
-let index = 0;
-let mode = null;
-
-const radios = {
-  new: {
-    name: "Новое Радио",
-    url: "https://stream.newradio.ru/moscow.novoe.aacp"
+const playlists = {
+  local: {
+    name: "Local Mix",
+    tracks: [
+      "music/local/track01.mp3",
+      "music/local/track02.mp3",
+      "music/local/track03.mp3"
+    ]
   },
-  night: {
-    name: "Night Vibe",
-    url: "https://radio.plaza.one/mp3"
-  },
-  techno: {
-    name: "TechnoBase.FM",
-    url: "https://listen.technobase.fm/tunein-mp3"
+  love: {
+    name: "Love Radio (Local)",
+    tracks: [
+      "music/love/love01.mp3",
+      "music/love/love02.mp3",
+      "music/love/love03.mp3"
+    ]
   }
 };
 
-function shuffle(arr) {
-  return arr.sort(() => Math.random() - 0.5);
+let currentList = [];
+let currentName = "";
+
+function playPlaylist(key) {
+  const list = playlists[key];
+  if (!list) return;
+
+  currentList = shuffle([...list.tracks]);
+  currentName = list.name;
+
+  playNext();
 }
 
-function playLocal(type) {
-  mode = "playlist";
-  controls.style.display = "block";
+function playNext() {
+  if (currentList.length === 0) return;
 
-  playlist = shuffle([
-    `music/${type}/track1.mp3`,
-    `music/${type}/track2.mp3`,
-    `music/${type}/track3.mp3`
-  ]);
-
-  index = 0;
-  playTrack();
+  const track = currentList.shift();
+  audio.src = track;
+  audio.play().catch(() => {});
+  now.textContent = currentName;
 }
 
-function playTrack() {
-  audio.src = playlist[index];
-  audio.play();
-  now.textContent = "Local Playlist";
-}
+audio.addEventListener("ended", playNext);
 
-function nextTrack() {
-  index++;
-  if (index >= playlist.length) {
-    playlist = shuffle(playlist);
-    index = 0;
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
   }
-  playTrack();
-}
-
-function prevTrack() {
-  index = index > 0 ? index - 1 : playlist.length - 1;
-  playTrack();
-}
-
-function playRadio(key) {
-  mode = "radio";
-  controls.style.display = "none";
-
-  audio.src = radios[key].url;
-  audio.play();
-  now.textContent = radios[key].name;
+  return array;
 }
