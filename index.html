@@ -12,11 +12,15 @@
 
 <div class="app">
   <h1 class="logo">🎄 NL WAVE</h1>
-  <p class="subtitle">Зимний вайб • музыка без остановки</p>
+  <p class="subtitle">Выбери волну — остальное сделает музыка</p>
 
   <div class="stations">
     <button onclick="playPlaylist('local')">Local Mix</button>
     <button onclick="playPlaylist('love')">Love Radio (Local)</button>
+
+    <button onclick="playRadio('new')">Новое Радио</button>
+    <button onclick="playRadio('techno')">TechnoBase.FM</button>
+    <button onclick="playRadio('night')">Night Vibe</button>
   </div>
 
   <div class="now">
@@ -24,8 +28,8 @@
   </div>
 </div>
 
-<audio id="audio"></audio>
+<audio id="audio" crossorigin="anonymous"></audio>
 
 <script src="player.js"></script>
 </body>
-</html>
+</html> 
