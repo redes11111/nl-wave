@@ -86,20 +86,33 @@ body {
   margin: 0;
   font-size: 32px;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* Красная шляпка в пиксельном стиле на буквах NL */
 .logo::before {
-  content: '🎅';
+  content: '';
   position: absolute;
-  top: -10px;
-  left: -20px;
-  font-size: 24px;
-  transform: rotate(-20deg);
+  top: -25px;
+  left: -10px;
+  width: 40px;
+  height: 30px;
+  background: red;
+  clip-path: polygon(0 100%, 100% 100%, 70% 0, 30% 0); /* Форма шляпы с изгибом */
   image-rendering: pixelated; /* Пиксельный стиль */
+  border: 2px solid #fff; /* Белая окантовка */
+  border-bottom: none;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 25px;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  image-rendering: pixelated; /* Помпон */
 }
 
 .subtitle {
