@@ -6,7 +6,9 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, #1a2a4f, #05060f);
+  background: linear-gradient(0deg, #001f3f, #000033, #003366, #006666, #009966); /* Северное сияние цвета */
+  background-size: 400% 400%;
+  animation: aurora 15s ease infinite; /* Анимация сияния */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,23 +16,42 @@ body {
   overflow: hidden;
 }
 
-/* ❄️ Снег */
-.snow::before {
-  content: "";
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.snow {
   position: fixed;
-  top: -200%;
-  left: -200%;
-  width: 400%;
-  height: 400%;
-  background-image: radial-gradient(#fff 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: snow 60s linear infinite;
-  opacity: 0.2;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 100px 80px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 200px 120px, #fff, transparent),
+    radial-gradient(2px 2px at 300px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 400px 100px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 50px 150px, #fff, transparent),
+    radial-gradient(2px 2px at 150px 200px, #fff, transparent),
+    radial-gradient(1px 1px at 250px 50px, #fff, transparent),
+    radial-gradient(2px 2px at 350px 180px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 450px 90px, #fff, transparent),
+    radial-gradient(2px 2px at 500px 130px, #fff, transparent),
+    radial-gradient(1px 1px at 600px 70px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 700px 160px, #fff, transparent); /* Ещё больше снежинок */
+  animation: snow 12s linear infinite;
+  opacity: 0.6;
+  z-index: 1;
 }
 
 @keyframes snow {
-  from { transform: translateY(0); }
-  to { transform: translateY(50%); }
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(100vh);
+  }
 }
 
 .app {
@@ -43,6 +64,7 @@ body {
   text-align: center;
   box-shadow: 0 0 40px rgba(100, 140, 255, 0.35);
   position: relative;
+  z-index: 2;
 }
 
 .logo {
@@ -75,4 +97,93 @@ body {
 .now {
   margin-top: 20px;
   opacity: 0.9;
+}
+
+/* Красная новогодняя шапочка слева */
+.santa-hat {
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 60px solid red;
+  transform: rotate(-45deg);
+  animation: sway 2s ease-in-out infinite alternate;
+  z-index: 3;
+}
+
+.santa-hat::after {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: -15px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+}
+
+@keyframes sway {
+  0% { transform: rotate(-45deg) rotateZ(0deg); }
+  100% { transform: rotate(-45deg) rotateZ(10deg); }
+}
+
+/* Мини-персонажи (анимация лепки снеговика) */
+.character {
+  position: fixed;
+  bottom: 50px;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  animation: buildSnowman 4s infinite alternate;
+  z-index: 1;
+}
+
+.character::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.character::after {
+  content: '';
+  position: absolute;
+  top: -45px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.character1 {
+  left: 20%;
+  animation-delay: 0s;
+  content: '🦔'; /* Sonic-like */
+}
+
+.character2 {
+  left: 45%;
+  animation-delay: 1s;
+  content: '🍄'; /* Mario mushroom */
+}
+
+.character3 {
+  left: 70%;
+  animation-delay: 2s;
+  content: '👻'; /* Pac-Man ghost */
+}
+
+@keyframes buildSnowman {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
 }
