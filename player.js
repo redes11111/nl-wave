@@ -1,6 +1,7 @@
 const audio = document.getElementById("audio");
 const now = document.getElementById("now");
 
+/* 🔹 Локальные плейлисты */
 const playlists = {
   local: {
     name: "Local Mix",
@@ -20,30 +21,56 @@ const playlists = {
   }
 };
 
-let currentList = [];
-let currentName = "";
+/* 🔹 Онлайн радио */
+const radios = {
+  new: {
+    name: "Новое Радио",
+    url: "https://stream.newradio.ru/moscow.novoe.aacp"
+  },
+  techno: {
+    name: "TechnoBase.FM",
+    url: "https://listen.technobase.fm/tunein-mp3"
+  },
+  night: {
+    name: "Night Vibe",
+    url: "https://radio.plaza.one/mp3"
+  }
+};
 
+let currentList = [];
+
+/* ▶️ Локальные */
 function playPlaylist(key) {
   const list = playlists[key];
   if (!list) return;
 
   currentList = shuffle([...list.tracks]);
-  currentName = list.name;
-
   playNext();
+  now.textContent = list.name;
 }
 
+/* ▶️ Онлайн */
+function playRadio(key) {
+  const station = radios[key];
+  if (!station) return;
+
+  currentList = [];
+  audio.src = station.url;
+  audio.load();
+  audio.play().catch(() => {});
+  now.textContent = station.name;
+}
+
+/* 🔁 Следующий локальный трек */
 function playNext() {
   if (currentList.length === 0) return;
-
-  const track = currentList.shift();
-  audio.src = track;
+  audio.src = currentList.shift();
   audio.play().catch(() => {});
-  now.textContent = currentName;
 }
 
 audio.addEventListener("ended", playNext);
 
+/* 🔀 Рандом */
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
