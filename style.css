@@ -86,32 +86,20 @@ body {
   margin: 0;
   font-size: 32px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Пиксельная красная праздничная шляпочка на NL (не анимированная, пиксельный вид) */
+/* Красная шляпка в пиксельном стиле на буквах NL */
 .logo::before {
-  content: '';
+  content: '🎅';
   position: absolute;
-  top: -20px;
-  left: -5px;
-  width: 30px;
-  height: 20px;
-  background: red;
-  clip-path: polygon(0 100%, 100% 100%, 50% 0);
-  image-rendering: pixelated; /* Пиксельный эффект */
-  border: 1px solid #fff; /* Белая окантовка для помпона */
-}
-
-.logo::after {
-  content: '';
-  position: absolute;
-  top: -25px;
-  left: 8px;
-  width: 10px;
-  height: 10px;
-  background: white;
-  border-radius: 50%;
-  image-rendering: pixelated;
+  top: -10px;
+  left: -20px;
+  font-size: 24px;
+  transform: rotate(-20deg);
+  image-rendering: pixelated; /* Пиксельный стиль */
 }
 
 .subtitle {
