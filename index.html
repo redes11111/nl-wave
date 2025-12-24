@@ -2,34 +2,34 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>NL WAVE</title>
+  <title>NL WAVE 🌊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-  <h1>Выбери волну — остальное сделает музыка</h1>
+<div class="snow"></div>
+
+<div class="app">
+  <h1 class="logo"> NL WAVE 🎄</h1>
+  <p class="subtitle">Выбери волну — остальное сделает музыка</p>
 
   <div class="stations">
-    <button onclick="playLocal('local')">Local</button>
-    <button onclick="playLocal('love')">Love Radio (Local)</button>
+    <button onclick="playPlaylist('local')">Local Mix</button>
+    <button onclick="playPlaylist('love')">Love Radio (Local)</button>
 
-    <button onclick="playStream('https://icecast.newradio.md/live')">
-      Новое Радио
-    </button>
-
-    <button onclick="playStream('https://listen.technobase.fm/tunein-mp3')">
-      TechnoBase.FM
-    </button>
-
-    <button onclick="playStream('https://stream.nightvibe.fm/radio/8000/radio.mp3')">
-      Night Vibe
-    </button>
+    <button onclick="playRadio('new')">Новое Радио</button>
+    <button onclick="playRadio('techno')">TechnoBase.FM</button>
+    <button onclick="playRadio('night')">Night Vibe</button>
   </div>
 
-  <audio id="player" controls autoplay></audio>
+  <div class="now">
+    🔊 Сейчас играет: <span id="now">—</span>
+  </div>
 </div>
 
-<script src="script.js"></script>
+<audio id="audio" crossorigin="anonymous"></audio>
+
+<script src="player.js"></script>
 </body>
 </html>
