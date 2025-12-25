@@ -1,27 +1,24 @@
 const audio = document.getElementById("audio");
 const now = document.getElementById("now");
 
-/* 🔹 Локальные плейлисты */
 const playlists = {
   local: {
     name: "Local Mix",
     tracks: [
       "music/local/track01.mp3",
-      "music/local/track02.mp3",
-      "music/local/track03.mp3"
+      "music/local/track02.mp3"
     ]
   },
+
   love: {
     name: "Love Radio (Local)",
     tracks: [
       "music/love/love01.mp3",
-      "music/love/love02.mp3",
-      "music/love/love03.mp3"
+      "music/love/love02.mp3"
     ]
   }
 };
 
-/* 🔹 Онлайн радио */
 const radios = {
   new: {
     name: "Новое Радио",
@@ -39,7 +36,6 @@ const radios = {
 
 let currentList = [];
 
-/* ▶️ Локальные */
 function playPlaylist(key) {
   const list = playlists[key];
   if (!list) return;
@@ -49,32 +45,31 @@ function playPlaylist(key) {
   now.textContent = list.name;
 }
 
-/* ▶️ Онлайн */
 function playRadio(key) {
   const station = radios[key];
   if (!station) return;
 
   currentList = [];
   audio.src = station.url;
-  audio.load();
-  audio.play().catch(() => {});
+  audio.play();
   now.textContent = station.name;
 }
 
-/* 🔁 Следующий локальный трек */
 function playNext() {
   if (currentList.length === 0) return;
-  audio.src = currentList.shift();
-  audio.play().catch(() => {});
+
+  const track = currentList.shift();
+  console.log("▶️ Playing:", track);
+  audio.src = track;
+  audio.play();
 }
 
 audio.addEventListener("ended", playNext);
 
-/* 🔀 Рандом */
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-  return array;
+  return arr;
 }
