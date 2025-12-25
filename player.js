@@ -5,16 +5,16 @@ const playlists = {
   local: {
     name: "Local Mix",
     tracks: [
-      "music/local/track01.mp3",
-      "music/local/track02.mp3"
+      "music/local/HOLLYFLAME - Красками.mp3",
+      "music/local/Post_Malone_Swae_Lee_-_Sunflower_59804834.mp3"
     ]
   },
 
   love: {
     name: "Love Radio (Local)",
     tracks: [
-      "music/love/love01.mp3",
-      "music/love/love02.mp3"
+      "AudioCutter_ke(2).mp3",
+      "AudioCutter_ke(3).mp3"
     ]
   }
 };
