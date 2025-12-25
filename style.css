@@ -86,33 +86,42 @@ body {
   margin: 0;
   font-size: 32px;
   position: relative;
+  display: inline-block;
 }
 
-/* Красная шляпка в пиксельном стиле на буквах NL */
-.logo::before {
-  content: '';
-  position: absolute;
-  top: -25px;
-  left: -10px;
-  width: 40px;
-  height: 30px;
-  background: red;
-  clip-path: polygon(0 100%, 100% 100%, 70% 0, 30% 0); /* Форма шляпы с изгибом */
-  image-rendering: pixelated; /* Пиксельный стиль */
-  border: 2px solid #fff; /* Белая окантовка */
-  border-bottom: none;
+/* Контейнер для NL */
+.hat-target {
+  position: relative;
+  display: inline-block;
 }
 
-.logo::after {
+/* Пиксельная шапка */
+.hat-target::before {
   content: '';
   position: absolute;
-  top: -15px;
-  left: 25px;
-  width: 10px;
-  height: 10px;
-  background: white;
-  border-radius: 50%;
-  image-rendering: pixelated; /* Помпон */
+  /* Позиционирование ровно над NL */
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
+  width: 42px;
+  height: 28px;
+  
+  /* Используем качественную пиксельную иконку */
+  background-image: url('https://img.icons8.com/pixel-仗/64/santa-hat.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  
+  /* Магия пикселей: отключаем сглаживание */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  
+  z-index: 5;
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+}
+
+/* Удаляем старые после-эффекты, если они остались */
+.logo::before, .logo::after {
+  display: none;
 }
 
 .subtitle {
