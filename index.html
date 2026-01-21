@@ -15,12 +15,21 @@
   <p class="subtitle">Выбери волну — остальное сделает музыка</p>
 
   <div class="stations">
-    <button onclick="playPlaylist('local')">Local Mix</button>
-    <button onclick="playPlaylist('love')">Love Radio (Local)</button>
 
-    <button onclick="playRadio('new')">Новое Радио</button>
-    <button onclick="playRadio('techno')">TechnoBase.FM</button>
-    <button onclick="playRadio('night')">Night Vibe</button>
+  <div class="station">
+    <button onclick="playPlaylist('local')">Local Mix</button>
+    <div class="beta">BETA • Limited Content</div>
+  </div>
+
+  <div class="station">
+    <button onclick="playPlaylist('love')">Love Radio (Local)</button>
+    <div class="beta">BETA • Limited Content</div>
+  </div>
+
+  <button onclick="playRadio('new')">Новое Радио</button>
+  <button onclick="playRadio('techno')">TechnoBase.FM</button>
+  <button onclick="playRadio('night')">Night Vibe</button>
+
   </div>
 
   <div class="now">
