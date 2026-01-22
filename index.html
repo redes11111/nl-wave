@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>NEXT WAVE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Чтобы избежать дублирующего бара в iOS/Android -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,11 +20,11 @@
         <div class="stations">
             <button class="station-button" onclick="playPlaylist('local')">
                 Local Mix
-                <span class="subtext">• Limited Content</span>
+                <span class="subtext">&bull; Limited Content</span>
             </button>
             <button class="station-button" onclick="playPlaylist('love')">
                 Love Radio (Local)
-                <span class="subtext">• BETA • Limited Content</span>
+                <span class="subtext">&bull; BETA &bull; Limited Content</span>
             </button>
             <button class="station-button" onclick="playRadio('new')">Новое Радио</button>
             <button class="station-button" onclick="playRadio('techno')">TechnoBase.FM</button>
@@ -35,7 +36,6 @@
         <span>Сейчас играет: <span id="now">—</span></span>
     </footer>
     <audio id="audio" crossorigin="anonymous"></audio>
-    <script src="tracks.js"></script>
-    <script src="player.js"></script>
+    <script src="player.js"></script> <!-- Убрал tracks.js, всё в player.js -->
 </body>
 </html>
