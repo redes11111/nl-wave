@@ -1,45 +1,41 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>NL WAVE 🌊</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>NEXT WAVE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="snow"></div>
-
-<div class="app">
-  <h1 class="logo"><span class="hat-target">NL</span> WAVE 🎄</h1>
-  <p class="subtitle">Выбери волну — остальное сделает музыка</p>
-
-  <div class="stations">
-
-  <div class="station">
-    <button onclick="playPlaylist('local')">Local Mix</button>
-    <div class="beta">BETA • Limited Content</div>
-  </div>
-
-  <div class="station">
-    <button onclick="playPlaylist('love')">Love Radio (Local)</button>
-    <div class="beta">BETA • Limited Content</div>
-  </div>
-
-  <button onclick="playRadio('new')">Новое Радио</button>
-  <button onclick="playRadio('techno')">TechnoBase.FM</button>
-  <button onclick="playRadio('night')">Night Vibe</button>
-
-  </div>
-
-  <div class="now">
-    🔊 Сейчас играет: <span id="now">—</span>
-  </div>
-</div>
-
-<audio id="audio" crossorigin="anonymous"></audio>
-
-<script src="tracks.js"></script>
-<script src="player.js"></script>
+    <header class="top-bar">
+        <div class="back-arrow">&larr;</div>
+        <div class="title">RADIO & MUSIC</div>
+        <div class="date">25 декабря в 19:11</div>
+        <div class="menu-dots">&#8942;</div>
+    </header>
+    <main class="content">
+        <h1 class="next-wave">NEXT WAVE</h1>
+        <p class="subtitle">Выберите волну — оставьте спедать Музыка</p>
+        <div class="stations">
+            <button class="station-button" onclick="playPlaylist('local')">
+                Local Mix
+                <span class="subtext">• Limited Content</span>
+            </button>
+            <button class="station-button" onclick="playPlaylist('love')">
+                Love Radio (Local)
+                <span class="subtext">• BETA • Limited Content</span>
+            </button>
+            <button class="station-button" onclick="playRadio('new')">Новое Радио</button>
+            <button class="station-button" onclick="playRadio('techno')">TechnoBase.FM</button>
+            <button class="station-button" onclick="playRadio('night')">Night Vibe</button>
+        </div>
+    </main>
+    <footer class="now-playing">
+        <div class="speaker-icon">&#128266;</div>
+        <span>Сейчас играет: <span id="now">—</span></span>
+    </footer>
+    <audio id="audio" crossorigin="anonymous"></audio>
+    <script src="tracks.js"></script>
+    <script src="player.js"></script>
 </body>
 </html>
