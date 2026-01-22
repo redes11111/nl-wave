@@ -1,165 +1,138 @@
 * {
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #1a2a4f, #05060f);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #0a0a2a; /* Тёмно-синий фон */
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    overflow: hidden;
+    /* Сетка линий */
+    background-image: 
+        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
 }
 
-/* ❄️ Снег (ещё больше, постоянный, с несколькими слоями для непрерывности) */
-.snow::before {
-  content: "";
-  position: fixed;
-  top: -200%;
-  left: -200%;
-  width: 400%;
-  height: 400%;
-  background-image: radial-gradient(#fff 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: snow 60s linear infinite;
-  opacity: 0.2;
+.top-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    position: fixed;
+    top: 0;
+    z-index: 1;
 }
 
-.snow::after {
-  content: "";
-  position: fixed;
-  top: -200%;
-  left: -200%;
-  width: 400%;
-  height: 400%;
-  background-image: radial-gradient(#fff 1px, transparent 1px);
-  background-size: 30px 30px;
-  animation: snow 40s linear infinite reverse;
-  opacity: 0.3;
+.back-arrow {
+    font-size: 24px;
+    cursor: pointer;
 }
 
-.snow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-    radial-gradient(2px 2px at 100px 80px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 200px 120px, #fff, transparent),
-    radial-gradient(2px 2px at 300px 40px, #fff, transparent),
-    radial-gradient(1px 1px at 400px 100px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 50px 150px, #fff, transparent),
-    radial-gradient(2px 2px at 150px 200px, #fff, transparent),
-    radial-gradient(1px 1px at 250px 50px, #fff, transparent),
-    radial-gradient(2px 2px at 350px 180px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 450px 90px, #fff, transparent),
-    radial-gradient(2px 2px at 500px 130px, #fff, transparent),
-    radial-gradient(1px 1px at 600px 70px, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 700px 160px, #fff, transparent),
-    radial-gradient(2px 2px at 800px 110px, #fff, transparent),
-    radial-gradient(1px 1px at 900px 140px, #fff, transparent); /* Добавлено ещё больше для плотности */
-  animation: snow 50s linear infinite; /* Основной слой */
-  opacity: 0.4;
+.title {
+    font-weight: bold;
 }
 
-@keyframes snow {
-  from { transform: translateY(0); }
-  to { transform: translateY(50%); }
+.date {
+    font-size: 14px;
+    opacity: 0.8;
 }
 
-.app {
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(14px);
-  padding: 30px;
-  border-radius: 24px;
-  width: 90%;
-  max-width: 420px;
-  text-align: center;
-  box-shadow: 0 0 40px rgba(100, 140, 255, 0.35);
-  position: relative;
+.menu-dots {
+    font-size: 20px;
+    cursor: pointer;
 }
 
-.logo {
-  margin: 0;
-  font-size: 32px;
-  position: relative;
-  display: inline-block;
+.content {
+    margin-top: 60px; /* Отступ под топ-бар */
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
 }
 
-/* Контейнер для NL */
-.hat-target {
-  position: relative;
-  display: inline-block;
-}
-
-/* Пиксельная шапка */
-.hat-target::before {
-  content: '';
-  position: absolute;
-  /* Позиционирование ровно над NL */
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-5deg);
-  width: 42px;
-  height: 28px;
-  
-  /* Используем качественную пиксельную иконку */
-  background-image: url('https://img.icons8.com/pixel-仗/64/santa-hat.png'); 
-  background-size: contain;
-  background-repeat: no-repeat;
-  
-  /* Магия пикселей: отключаем сглаживание */
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  
-  z-index: 5;
-  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
-}
-
-/* Удаляем старые после-эффекты, если они остались */
-.logo::before, .logo::after {
-  display: none;
+.next-wave {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff, 0 0 30px #00ffff;
+    margin-bottom: 10px;
 }
 
 .subtitle {
-  opacity: 0.8;
-  margin-bottom: 20px;
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 30px;
 }
 
-.stations button {
-  width: 100%;
-  margin: 10px 0;
-  padding: 14px;
-  border: none;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #ff0000, #b30000); /* Тёмно-красный градиент для лучшего контраста */
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  transition: transform 0.2s;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Тёмная тень для текста, чтобы не сливался */
+.stations {
+    display: flex;
+    flex-direction: column;
 }
 
-.stations button:hover {
-  transform: scale(1.04);
+.station-button {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+    border-radius: 50px;
+    padding: 15px 20px;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 25px rgba(255, 0, 255, 0.3);
+    background: linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1));
+    transition: all 0.3s ease;
 }
 
-.now {
-  margin-top: 20px;
-  opacity: 0.9;
+.station-button:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(255, 0, 255, 0.5);
 }
 
-.station {
-  margin-bottom: 12px;
+.subtext {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-left: 10px;
 }
 
-.beta {
-  margin-top: 4px;
-  font-size: 11px;
-  letter-spacing: 0.5px;
-  color: #9ca3af;
-  opacity: 0.85;
+.now-playing {
+    position: fixed;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.speaker-icon {
+    margin-right: 10px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+    .content {
+        padding: 10px;
+    }
+    .next-wave {
+        font-size: 36px;
+    }
 }
