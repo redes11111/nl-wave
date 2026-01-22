@@ -2,74 +2,73 @@ const audio = document.getElementById("audio");
 const now = document.getElementById("now");
 
 const playlists = {
-  local: {
-    name: "Local Mix",
-    tracks: [
-      "music/local/HOLLYFLAME - Красками.mp3",
-      "music/local/Post_Malone_Swae_Lee_-_Sunflower_59804834.mp3"
-    ]
-  },
-
-  love: {
-    name: "Love Radio (Local)",
-    tracks: [
-      "AudioCutter_ke(2).mp3",
-      "AudioCutter_ke(3).mp3"
-    ]
-  }
+    local: {
+        name: "Local Mix",
+        tracks: [
+            "music/local/HOLLYFLAME - Красками.mp3",
+            "music/local/Post_Malone_Swae_Lee_-_Sunflower_59804834.mp3"
+        ]
+    },
+    love: {
+        name: "Love Radio (Local)",
+        tracks: [
+            "music/love/AudioCutter_ke(2).mp3",
+            "music/love/AudioCutter_ke(3).mp3"
+        ]
+    }
 };
 
 const radios = {
-  new: {
-    name: "Новое Радио",
-    url: "https://stream.newradio.ru/moscow.novoe.aacp"
-  },
-  techno: {
-    name: "TechnoBase.FM",
-    url: "https://listen.technobase.fm/tunein-mp3"
-  },
-  night: {
-    name: "Night Vibe",
-    url: "https://radio.plaza.one/mp3"
-  }
+    new: {
+        name: "Новое Радио",
+        url: "https://stream.newradio.ru/moscow.novoe.aacp"
+    },
+    techno: {
+        name: "TechnoBase.FM",
+        url: "https://listen.technobase.fm/tunein-mp3"
+    },
+    night: {
+        name: "Night Vibe",
+        url: "https://radio.plaza.one/mp3"
+    }
 };
 
 let currentList = [];
 
 function playPlaylist(key) {
-  const list = playlists[key];
-  if (!list) return;
+    const list = playlists[key];
+    if (!list) return;
 
-  currentList = shuffle([...list.tracks]);
-  playNext();
-  now.textContent = list.name;
+    currentList = shuffle([...list.tracks]);
+    playNext();
+    now.textContent = list.name;
 }
 
 function playRadio(key) {
-  const station = radios[key];
-  if (!station) return;
+    const station = radios[key];
+    if (!station) return;
 
-  currentList = [];
-  audio.src = station.url;
-  audio.play();
-  now.textContent = station.name;
+    currentList = [];
+    audio.src = station.url;
+    audio.play();
+    now.textContent = station.name;
 }
 
 function playNext() {
-  if (currentList.length === 0) return;
+    if (currentList.length === 0) return;
 
-  const track = currentList.shift();
-  console.log("▶️ Playing:", track);
-  audio.src = track;
-  audio.play();
+    const track = currentList.shift();
+    console.log("▶️ Playing:", track);
+    audio.src = track;
+    audio.play();
 }
 
 audio.addEventListener("ended", playNext);
 
 function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
 }
