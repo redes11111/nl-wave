@@ -12,8 +12,8 @@ const playlists = {
     love: {
         name: "Love Radio (Local)",
         tracks: [
-            "music/love/AudioCutter_ke(2).mp3",
-            "music/love/AudioCutter_ke(3).mp3"
+            "music/local/love/AudioCutter_ke(2).mp3",
+            "music/local/love/AudioCutter_ke(3).mp3"
         ]
     }
 };
@@ -40,6 +40,7 @@ function playPlaylist(key) {
     if (!list) return;
 
     currentList = shuffle([...list.tracks]);
+    console.log("Playlist tracks:", currentList); // Debug: проверь пути в консоли
     playNext();
     now.textContent = list.name;
 }
@@ -50,7 +51,7 @@ function playRadio(key) {
 
     currentList = [];
     audio.src = station.url;
-    audio.play();
+    audio.play().catch(e => console.error("Radio play error:", e));
     now.textContent = station.name;
 }
 
@@ -58,9 +59,9 @@ function playNext() {
     if (currentList.length === 0) return;
 
     const track = currentList.shift();
-    console.log("▶️ Playing:", track);
+    console.log("▶️ Playing track:", track); // Debug: увидишь, загружается ли
     audio.src = track;
-    audio.play();
+    audio.play().catch(e => console.error("Track play error:", e));
 }
 
 audio.addEventListener("ended", playNext);
