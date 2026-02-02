@@ -4,38 +4,49 @@
     <meta charset="UTF-8">
     <title>NEXT WAVE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Чтобы избежать дублирующего бара в iOS/Android -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="stars"></div>
     <header class="top-bar">
-        <div class="back-arrow">&larr;</div>
-        <div class="title">RADIO & MUSIC</div>
-        <div class="date">25 декабря в 19:11</div>
-        <div class="menu-dots">&#8942;</div>
+        <div class="back-arrow">←</div>
+        <div class="header-right">
+            <div class="title">RADIO & MUSIC</div>
+            <div class="date">25 декабря в 19:11</div>
+        </div>
+        <div class="menu-dots">⋮</div>
     </header>
     <main class="content">
-        <h1 class="next-wave">NEXT WAVE</h1>
-        <p class="subtitle">Выберите волну — оставьте спедать Музыка</p>
-        <div class="stations">
-            <button class="station-button" onclick="playPlaylist('local')">
-                Local Mix
-                <span class="subtext">&bull; Limited Content</span>
-            </button>
-            <button class="station-button" onclick="playPlaylist('love')">
-                Love Radio (Local)
-                <span class="subtext">&bull; BETA &bull; Limited Content</span>
-            </button>
-            <button class="station-button" onclick="playRadio('new')">Новое Радио</button>
-            <button class="station-button" onclick="playRadio('techno')">TechnoBase.FM</button>
-            <button class="station-button" onclick="playRadio('night')">Night Vibe</button>
+        <div class="card">
+            <h1 class="next-wave">NEXT WAVE</h1>
+            <p class="subtitle">Выбери волну — остальное сделает музыка</p>
+            <div class="stations">
+                <button class="station-button" onclick="playPlaylist('local')">
+                    <span class="station-name">Local Mix</span>
+                    <span class="subtext">• Limited Content</span>
+                </button>
+                <button class="station-button" onclick="playPlaylist('love')">
+                    <span class="station-name">Love Radio (Local)</span>
+                    <span class="subtext">• BETA • Limited Content</span>
+                </button>
+                <button class="station-button" onclick="playRadio('new')">
+                    <span class="station-name">Новое Радио</span>
+                </button>
+                <button class="station-button" onclick="playRadio('techno')">
+                    <span class="station-name">TechnoBase.FM</span>
+                </button>
+                <button class="station-button" onclick="playRadio('night')">
+                    <span class="station-name">Night Vibe</span>
+                </button>
+            </div>
+            <footer class="now-playing">
+                <div class="speaker-icon">🔊</div>
+                <span>Сейчас играет: <span id="now">—</span></span>
+            </footer>
         </div>
     </main>
-    <footer class="now-playing">
-        <div class="speaker-icon">&#128266;</div>
-        <span>Сейчас играет: <span id="now">—</span></span>
-    </footer>
     <audio id="audio" crossorigin="anonymous"></audio>
-    <script src="player.js"></script> <!-- Убрал tracks.js, всё в player.js -->
+    <script src="player.js"></script>
 </body>
 </html>
