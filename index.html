@@ -2,50 +2,83 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>NEXT WAVE</title>
+    <title>NEXT WAVE - Radio & Music</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="stars"></div>
+    <div class="background-container">
+        <div class="cityscape"></div>
+        <div class="grid-overlay"></div>
+    </div>
+    
     <header class="top-bar">
         <div class="back-arrow">←</div>
-        <div class="header-right">
+        <div class="header-center">
             <div class="title">RADIO & MUSIC</div>
             <div class="date">25 декабря в 19:11</div>
         </div>
         <div class="menu-dots">⋮</div>
     </header>
+
     <main class="content">
-        <div class="card">
-            <h1 class="next-wave">NEXT WAVE</h1>
-            <p class="subtitle">Выбери волну — остальное сделает музыка</p>
-            <div class="stations">
-                <button class="station-button" onclick="playPlaylist('local')">
-                    <span class="station-name">Local Mix</span>
-                    <span class="subtext">• Limited Content</span>
-                </button>
-                <button class="station-button" onclick="playPlaylist('love')">
-                    <span class="station-name">Love Radio (Local)</span>
-                    <span class="subtext">• BETA • Limited Content</span>
-                </button>
-                <button class="station-button" onclick="playRadio('new')">
-                    <span class="station-name">Новое Радио</span>
-                </button>
-                <button class="station-button" onclick="playRadio('techno')">
-                    <span class="station-name">TechnoBase.FM</span>
-                </button>
-                <button class="station-button" onclick="playRadio('night')">
-                    <span class="station-name">Night Vibe</span>
-                </button>
+        <div class="logo-container">
+            <div class="headphones-icon">
+                <div class="headphone-left"></div>
+                <div class="headphone-arc"></div>
+                <div class="headphone-right"></div>
+                <div class="soundwave">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-            <footer class="now-playing">
-                <div class="speaker-icon">🔊</div>
-                <span>Сейчас играет: <span id="now">—</span></span>
-            </footer>
+        </div>
+
+        <h1 class="brand-title">NEXT WAVE</h1>
+        <p class="tagline">Выбери волну — остальное сделает музыка</p>
+
+        <div class="stations-container">
+            <button class="station-btn" onclick="playPlaylist('local')">
+                <div class="btn-glow"></div>
+                <span class="station-name">Local Mix</span>
+                <span class="station-meta">• Limited Content</span>
+            </button>
+
+            <button class="station-btn" onclick="playPlaylist('love')">
+                <div class="btn-glow"></div>
+                <span class="station-name">Love Radio (Local)</span>
+                <span class="station-meta">• BETA • Limited Content</span>
+            </button>
+
+            <button class="station-btn" onclick="playRadio('new')">
+                <div class="btn-glow"></div>
+                <span class="station-name">Новое Радио</span>
+            </button>
+
+            <button class="station-btn" onclick="playRadio('techno')">
+                <div class="btn-glow"></div>
+                <span class="station-name">TechnoBase.FM</span>
+            </button>
+
+            <button class="station-btn" onclick="playRadio('night')">
+                <div class="btn-glow"></div>
+                <span class="station-name">Night Vibe</span>
+            </button>
+        </div>
+
+        <div class="now-playing">
+            <svg class="speaker-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/>
+                <path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>Сейчас играет: <span id="now">—</span></span>
         </div>
     </main>
+
     <audio id="audio" crossorigin="anonymous"></audio>
     <script src="player.js"></script>
 </body>
