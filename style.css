@@ -6,45 +6,43 @@
 }
 
 body {
-    background: #0a0e27;
+    background: #0a0e1a;
     color: #ffffff;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
 }
 
-/* Звездное небо на фоне */
+/* Звездное небо - более яркие звезды */
 .stars {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 60%;
     background-image: 
-        radial-gradient(2px 2px at 20px 30px, white, transparent),
-        radial-gradient(2px 2px at 60px 70px, white, transparent),
-        radial-gradient(1px 1px at 50px 50px, white, transparent),
-        radial-gradient(1px 1px at 130px 80px, white, transparent),
-        radial-gradient(2px 2px at 90px 10px, white, transparent);
-    background-repeat: repeat;
-    background-size: 200px 200px;
-    opacity: 0.3;
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.6) 0.5px, transparent 0.5px);
+    background-position: 0 0, 40px 60px, 130px 270px;
+    background-size: 150px 150px, 200px 200px, 180px 180px;
+    opacity: 0.5;
     z-index: 0;
 }
 
-/* Сетка перспективы */
+/* Сетка перспективы - ярче и синее */
 body::before {
     content: '';
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50%;
+    height: 60%;
     background-image: 
-        linear-gradient(to right, rgba(100, 200, 255, 0.15) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(100, 200, 255, 0.15) 1px, transparent 1px);
+        linear-gradient(to right, rgba(50, 150, 255, 0.3) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(50, 150, 255, 0.3) 1px, transparent 1px);
     background-size: 50px 50px;
-    transform: perspective(500px) rotateX(60deg);
+    transform: perspective(300px) rotateX(60deg);
     transform-origin: bottom;
     z-index: 0;
     pointer-events: none;
@@ -58,7 +56,7 @@ body::before {
     align-items: center;
     justify-content: space-between;
     padding: 12px 16px;
-    background-color: rgba(10, 14, 39, 0.95);
+    background-color: rgba(15, 20, 35, 0.98);
     backdrop-filter: blur(10px);
 }
 
@@ -106,49 +104,51 @@ body::before {
 .card {
     width: 100%;
     max-width: 600px;
-    background: rgba(20, 25, 60, 0.6);
+    background: linear-gradient(180deg, rgba(25, 30, 55, 0.85) 0%, rgba(20, 25, 50, 0.9) 100%);
     border-radius: 30px;
-    padding: 40px 30px;
+    padding: 45px 30px 35px;
     box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.5),
-        inset 0 0 60px rgba(100, 150, 255, 0.05);
-    backdrop-filter: blur(20px);
+        0 25px 70px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(30px);
 }
 
 .next-wave {
-    font-size: 56px;
+    font-size: 58px;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    background: linear-gradient(90deg, #ff006e, #8338ec, #00d4ff);
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+    background: linear-gradient(90deg, #ff0080, #7928ca, #00d4ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 20px rgba(131, 56, 236, 0.8));
+    filter: drop-shadow(0 0 25px rgba(255, 0, 128, 0.6)) drop-shadow(0 0 40px rgba(0, 212, 255, 0.5));
     text-align: center;
+    line-height: 1.1;
 }
 
 .subtitle {
     font-size: 15px;
-    opacity: 0.7;
-    margin-bottom: 35px;
+    opacity: 0.65;
+    margin-bottom: 40px;
     text-align: center;
-    color: #b8c5d6;
+    color: #a8b5c9;
+    font-weight: 400;
 }
 
 .stations {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
 }
 
 .station-button {
-    background: linear-gradient(135deg, rgba(80, 40, 120, 0.5), rgba(40, 80, 120, 0.5));
-    border: 2.5px solid transparent;
+    background: linear-gradient(135deg, rgba(45, 30, 80, 0.7), rgba(30, 50, 90, 0.7));
+    border: none;
     border-radius: 50px;
-    padding: 18px 28px;
-    font-size: 18px;
+    padding: 20px 28px;
+    font-size: 19px;
     font-weight: 600;
     text-align: center;
     cursor: pointer;
@@ -159,37 +159,36 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Яркая градиентная рамка */
 .station-button::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     border-radius: 50px;
-    padding: 2.5px;
-    background: linear-gradient(135deg, #ff006e, #8338ec, #00d4ff);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    padding: 3px;
+    background: linear-gradient(135deg, #ff0080, #7928ca, #00d4ff);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    z-index: -1;
+    z-index: 0;
 }
 
+/* Внутреннее свечение при наведении */
 .station-button::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 50px;
-    background: linear-gradient(135deg, rgba(255, 0, 110, 0.3), rgba(131, 56, 236, 0.3), rgba(0, 212, 255, 0.3));
+    inset: 3px;
+    border-radius: 47px;
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(121, 40, 202, 0.2), rgba(0, 212, 255, 0.2));
     opacity: 0;
     transition: opacity 0.3s ease;
-    z-index: -1;
+    z-index: 0;
 }
 
 .station-button:hover::after {
@@ -197,74 +196,93 @@ body::before {
 }
 
 .station-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 
-        0 0 30px rgba(131, 56, 236, 0.6),
-        0 0 50px rgba(255, 0, 110, 0.4);
+        0 0 35px rgba(121, 40, 202, 0.7),
+        0 0 60px rgba(255, 0, 128, 0.5),
+        0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .station-button:active {
-    transform: translateY(0);
+    transform: translateY(-1px);
 }
 
 .station-name {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
+    position: relative;
+    z-index: 1;
 }
 
 .subtext {
-    font-size: 12px;
+    font-size: 13px;
     opacity: 0.5;
     font-weight: 400;
-    color: #00d4ff;
+    color: #60a5fa;
+    position: relative;
+    z-index: 1;
 }
 
 .now-playing {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 35px;
-    padding: 12px 24px;
-    background: rgba(0, 0, 0, 0.4);
+    margin-top: 40px;
+    padding: 14px 26px;
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 50px;
-    font-size: 13px;
-    opacity: 0.8;
-    gap: 8px;
+    font-size: 14px;
+    opacity: 0.75;
+    gap: 10px;
 }
 
 .speaker-icon {
-    font-size: 16px;
+    font-size: 18px;
+    opacity: 0.8;
 }
 
 /* Адаптация для мобильных */
 @media (max-width: 600px) {
     .card {
-        padding: 30px 20px;
+        padding: 35px 20px 30px;
     }
     
     .next-wave {
-        font-size: 42px;
+        font-size: 46px;
     }
     
     .subtitle {
         font-size: 14px;
     }
     
+    .stations {
+        gap: 15px;
+    }
+    
     .station-button {
-        padding: 16px 24px;
+        padding: 18px 24px;
     }
     
     .station-name {
-        font-size: 16px;
+        font-size: 17px;
+    }
+    
+    .subtext {
+        font-size: 12px;
     }
 }
 
 @media (max-width: 400px) {
     .next-wave {
-        font-size: 36px;
+        font-size: 40px;
+        letter-spacing: 2px;
     }
     
     .stations {
-        gap: 12px;
+        gap: 13px;
+    }
+    
+    .station-button {
+        padding: 16px 22px;
     }
 }
