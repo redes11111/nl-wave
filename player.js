@@ -17,9 +17,7 @@ const playlists = {
 const radios = {
     tnt: {
         name: "ТНТ Music Radio",
-        url: "http://nashe1.hostingradio.ru/tntmusic128.mp3"
-        // Альтернативные варианты, если первый не работает.
-        // url: "https://listen.181fm.com/181-90salt_128k.mp3"
+        url: "https://listen.181fm.com/181-90salt_128k.mp3"
     },
     new: {
         name: "Новое Радио",
