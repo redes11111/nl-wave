@@ -11,17 +11,17 @@ const playlists = {
             "music/local/HOLLYFLAME - Красками.mp3",
             "music/local/Post_Malone_Swae_Lee_-_Sunflower_59804834.mp3"
         ]
-    },
-    love: {
-        name: "Love Radio (Local)",
-        tracks: [
-            "music/local/love/AudioCutter_ke(2).mp3",
-            "music/local/love/AudioCutter_ke(3).mp3"
-        ]
     }
 };
 
 const radios = {
+    tnt: {
+        name: "ТНТ Music Radio",
+        url: "https://radiorecord.hostingradio.ru/tntmr128.mp3"
+        // Альтернативные варианты, если первый не работает:
+        // url: "http://nashe1.hostingradio.ru/tntmusic128.mp3"
+        // url: "https://listen.181fm.com/181-90salt_128k.mp3"
+    },
     new: {
         name: "Новое Радио",
         url: "https://stream.newradio.ru/moscow.novoe.aacp"
@@ -55,9 +55,21 @@ function playRadio(key) {
 
     currentList = [];
     audio.src = station.url;
-    audio.play().catch(e => console.error("Radio play error:", e));
-    now.textContent = station.name;
-    showMiniPlayer(station.name);
+    
+    // Показываем индикатор загрузки
+    showMiniPlayer(station.name + " (загрузка...)");
+    
+    audio.play()
+        .then(() => {
+            console.log("✅ Radio started:", station.name);
+            showMiniPlayer(station.name);
+            now.textContent = station.name;
+        })
+        .catch(e => {
+            console.error("❌ Radio play error:", e);
+            alert(`Не удалось подключиться к ${station.name}. Попробуйте другую станцию.`);
+            hideMiniPlayer();
+        });
 }
 
 function playNext() {
@@ -108,6 +120,16 @@ audio.addEventListener("ended", () => {
 // Показывать плеер когда начинается воспроизведение
 audio.addEventListener("play", () => {
     miniPlayer.classList.add('active');
+});
+
+// Обработка ошибок
+audio.addEventListener("error", (e) => {
+    console.error("Audio error:", e);
+    const currentStation = Object.values(radios).find(r => r.url === audio.src);
+    if (currentStation) {
+        alert(`Ошибка воспроизведения ${currentStation.name}`);
+        hideMiniPlayer();
+    }
 });
 
 function shuffle(arr) {
