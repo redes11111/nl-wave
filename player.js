@@ -8,8 +8,7 @@ const playlists = {
     local: {
         name: "Local Mix",
         tracks: [
-            "music/local/HOLLYFLAME - Красками.mp3",
-            "music/local/Post_Malone_Swae_Lee_-_Sunflower_59804834.mp3"
+          url: "https://drive.google.com/drive/folders/1leJtNm0UIS96SK1-kCAITDG3gnMmO-s8"
         ]
     },
     love: {
