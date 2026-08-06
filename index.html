@@ -8,18 +8,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-container">
-        <div class="cityscape"></div>
-        <div class="grid-overlay"></div>
-    </div>
-    
+    <div class="grid-bg"></div>
+    <div class="sparkle">✦</div>
+
     <header class="top-bar">
-        <div class="back-arrow">←</div>
-        <div class="header-center">
-            <div class="title">RADIO & MUSIC</div>
-            <div class="date">25 декабря в 19:11</div>
-        </div>
-        <div class="menu-dots">⋮</div>
+        <button class="back-btn" onclick="history.back()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Назад
+        </button>
     </header>
 
     <main class="content">
@@ -42,64 +40,51 @@
         <p class="tagline">Выбери волну — остальное сделает музыка</p>
 
         <div class="stations-container">
-            <button class="station-btn" onclick="playPlaylist('local')">
-                <div class="btn-glow"></div>
-                <span class="station-name">Local Mix</span>
-                <span class="station-meta">• Limited Content</span>
-            </button>
-
-            <button class="station-btn" onclick="playPlaylist('love')">
-                <div class="btn-glow"></div>
-                <span class="station-name">Love Radio (Local)</span>
-                <span class="station-meta">• BETA • Limited Content</span>
-            </button>
-
-            <button class="station-btn" onclick="playRadio('new')">
-                <div class="btn-glow"></div>
+            <button class="station-btn" data-color="cyan" onclick="playRadio('new')">
+                <span class="station-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 8L6 3M18 8H6M18 8v11a1 1 0 01-1 1H7a1 1 0 01-1-1V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="8" cy="14" r="1.3" fill="currentColor"/>
+                        <path d="M13 12h4M13 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </span>
                 <span class="station-name">Новое Радио</span>
             </button>
 
-            <button class="station-btn" onclick="playRadio('techno')">
-                <div class="btn-glow"></div>
+            <button class="station-btn" data-color="purple" onclick="playRadio('techno')">
+                <span class="station-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/>
+                        <circle cx="12" cy="12" r="0.8" fill="currentColor"/>
+                    </svg>
+                </span>
                 <span class="station-name">TechnoBase.FM</span>
             </button>
-
-            <button class="station-btn" onclick="playRadio('night')">
-                <div class="btn-glow"></div>
-                <span class="station-name">Night Vibe</span>
-            </button>
-        </div>
-
-        <div class="now-playing">
-            <svg class="speaker-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/>
-                <path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <span>Сейчас играет: <span id="now">—</span></span>
         </div>
     </main>
 
-    <!-- Плавающий мини-плеер -->
+    <!-- Мини-плеер -->
     <div class="mini-player" id="miniPlayer">
-        <div class="player-content">
-            <div class="track-info">
-                <div class="track-icon">
-                    <div class="vinyl-record">
-                        <div class="vinyl-center"></div>
-                    </div>
-                </div>
-                <div class="track-details">
-                    <div class="track-name" id="trackName">—</div>
-                    <div class="track-status">Playing</div>
-                </div>
-            </div>
-            
-            <button class="stop-btn" onclick="stopAudio()" title="Остановить">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/>
-                </svg>
-            </button>
+        <div class="player-cover" id="playerCover">
+            <span class="cover-icon" id="coverIcon"></span>
         </div>
+        <div class="player-info">
+            <div class="track-name" id="trackName">—</div>
+            <div class="track-status" id="trackStatus">Playing</div>
+        </div>
+        <div class="equalizer" id="equalizer">
+            <span></span><span></span><span></span><span></span>
+        </div>
+        <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlayPause()">
+            <svg id="pauseIcon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/>
+                <rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/>
+            </svg>
+            <svg id="playIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:none">
+                <path d="M7 5v14l12-7z" fill="currentColor"/>
+            </svg>
+        </button>
         <div class="player-progress">
             <div class="progress-bar" id="progressBar"></div>
         </div>
