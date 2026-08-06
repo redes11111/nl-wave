@@ -1,282 +1,37 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    background: #05050c;
-    color: #fff;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-}
-
-/* Кибер-сетка — теперь заметнее */
-.grid-bg {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 55%;
-    z-index: 0;
-    background-image:
-        linear-gradient(to right, rgba(168, 85, 247, 0.5) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(34, 211, 238, 0.4) 1px, transparent 1px);
-    background-size: 48px 48px;
-    transform: perspective(500px) rotateX(60deg) scale(1.6);
-    transform-origin: bottom;
-    opacity: 0.35;
-    -webkit-mask-image: linear-gradient(to top, black 40%, transparent 100%);
-    mask-image: linear-gradient(to top, black 40%, transparent 100%);
-    pointer-events: none;
-}
-
-.sparkle {
-    position: fixed;
-    bottom: 90px;
-    right: 24px;
-    font-size: 22px;
-    color: #7dd3fc;
-    opacity: 0.8;
-    z-index: 1;
-    animation: sparklePulse 2.5s ease-in-out infinite;
-}
-
-@keyframes sparklePulse {
-    0%, 100% { opacity: 0.4; transform: scale(0.9) rotate(0deg); }
-    50% { opacity: 1; transform: scale(1.15) rotate(15deg); }
-}
-
-.top-bar {
-    position: relative;
-    z-index: 10;
-    padding: 16px 18px;
-}
-
-.back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.08);
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-}
-
-.content {
-    position: relative;
-    z-index: 1;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 10px 24px 150px;
-    text-align: center;
-}
-
-.logo-container {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0 20px;
-}
-
-.headphones-icon {
-    position: relative;
-    width: 110px;
-    height: 100px;
-}
-
-.headphone-arc {
-    position: absolute;
-    top: 6px;
-    left: 15px;
-    width: 78px;
-    height: 55px;
-    border: 5px solid transparent;
-    border-top-color: #22d3ee;
-    border-left-color: #22d3ee;
-    border-right-color: #a855f7;
-    border-radius: 60px 60px 0 0;
-    filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.9));
-    animation: pulse 2s ease-in-out infinite;
-}
-
-.headphone-left, .headphone-right {
-    position: absolute;
-    width: 22px;
-    height: 34px;
-    border: 5px solid #22d3ee;
-    border-radius: 10px;
-    filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.7));
-}
-
-.headphone-left { top: 44px; left: 9px; }
-.headphone-right {
-    top: 44px;
-    right: 9px;
-    border-color: #a855f7;
-    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.7));
-}
-
-.soundwave {
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 4px;
-    align-items: center;
-    height: 26px;
-}
-
-.soundwave span {
-    width: 3px;
-    background: linear-gradient(to top, #a855f7, #22d3ee);
-    border-radius: 2px;
-    animation: wave 1s ease-in-out infinite;
-}
-
-.soundwave span:nth-child(1) { height: 30%; animation-delay: 0s; }
-.soundwave span:nth-child(2) { height: 60%; animation-delay: 0.1s; }
-.soundwave span:nth-child(3) { height: 100%; animation-delay: 0.2s; }
-.soundwave span:nth-child(4) { height: 60%; animation-delay: 0.3s; }
-.soundwave span:nth-child(5) { height: 30%; animation-delay: 0.4s; }
-
-@keyframes wave {
-    0%, 100% { transform: scaleY(0.5); }
-    50% { transform: scaleY(1); }
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.75; }
-}
-
-.brand-title {
-    font-size: 46px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    background: linear-gradient(90deg, #22d3ee, #a855f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-transform: uppercase;
-    filter: drop-shadow(0 0 22px rgba(168, 85, 247, 0.6));
-}
-
-.tagline {
-    font-size: 14px;
-    opacity: 0.55;
-    margin-bottom: 40px;
-    color: #cbd5e1;
-}
-
-/* Кнопки станций */
-.stations-container {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
+/* 1. Более точный alpha для glow */
 .station-btn {
-    position: relative;
-    background: rgba(15, 15, 25, 0.6);
-    border: 2px solid #22d3ee;
-    border-radius: 50px;
-    padding: 18px 26px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease;
-
-    /* Многослойное неоновое свечение */
     box-shadow:
-        0 0 15px rgba(34, 211, 238, 0.4),
-        inset 0 0 10px rgba(34, 211, 238, 0.2);
-
-    opacity: 0;
-    transform: translateY(24px);
-    animation: btnAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: calc(var(--delay) * 0.15s + 0.2s);
-}
-
-@keyframes btnAppear {
-    to { opacity: 1; transform: translateY(0); }
+        0 0 15px rgba(0, 229, 255, 0.45),
+        inset 0 0 10px rgba(0, 229, 255, 0.2);
 }
 
 .station-btn[data-color="purple"] {
-    border-color: #a855f7;
     box-shadow:
-        0 0 15px rgba(170, 0, 255, 0.4),
+        0 0 15px rgba(170, 0, 255, 0.45),
         inset 0 0 10px rgba(170, 0, 255, 0.2);
 }
 
-.station-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    flex-shrink: 0;
-}
-
-.station-name {
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #fff;
-}
-
-.station-btn:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow:
-        0 0 35px rgba(34, 211, 238, 0.7),
-        inset 0 0 15px rgba(34, 211, 238, 0.3);
-}
-
-.station-btn[data-color="purple"]:hover {
-    box-shadow:
-        0 0 35px rgba(170, 0, 255, 0.7),
-        inset 0 0 15px rgba(170, 0, 255, 0.3);
-}
-
-.station-btn.playing {
-    background: rgba(34, 211, 238, 0.12);
-}
-
-.station-btn:active {
-    transform: translateY(-1px) scale(0.99);
-}
-
-/* === МИНИ-ПЛЕЕР (Glassmorphism) === */
+/* 2. Плеер — точные размеры из макета */
 .mini-player {
     position: fixed;
-    bottom: 16px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%) translateY(140px);
-    width: calc(100% - 32px);
-    max-width: 460px;
-    background: rgba(15, 15, 25, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    width: 90%;
+    max-width: 400px;
     border-radius: 20px;
-    border: 1.5px solid rgba(34, 211, 238, 0.5);
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(18, 18, 28, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 14px 16px;
     z-index: 100;
     opacity: 0;
     display: flex;
     align-items: center;
     gap: 12px;
-    flex-wrap: wrap;
     transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(34, 211, 238, 0.15);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
 .mini-player.active {
@@ -285,9 +40,9 @@ body {
 }
 
 .player-cover {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
     background: linear-gradient(135deg, #22d3ee, #a855f7);
     flex-shrink: 0;
     display: flex;
@@ -295,93 +50,7 @@ body {
     justify-content: center;
 }
 
-.player-cover svg {
-    width: 22px;
-    height: 22px;
-    fill: #0a0e1a;
-}
-
-.player-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.track-name {
-    font-size: 15px;
-    font-weight: 700;
-    color: #fff;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.track-status {
-    font-size: 12px;
-    color: #7dd3fc;
-    opacity: 0.8;
-    margin-top: 2px;
-}
-
-.equalizer {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    height: 22px;
-}
-
-.equalizer span {
-    width: 3.5px;
-    background: linear-gradient(to top, #22d3ee, #a855f7);
-    border-radius: 2px;
-    animation: eqBounce 0.8s ease-in-out infinite;
-}
-
-.equalizer span:nth-child(1) { height: 30%; animation-delay: 0s; }
-.equalizer span:nth-child(2) { height: 100%; animation-delay: 0.15s; }
-.equalizer span:nth-child(3) { height: 60%; animation-delay: 0.3s; }
-.equalizer span:nth-child(4) { height: 80%; animation-delay: 0.45s; }
-
-.equalizer.paused span {
-    animation-play-state: paused;
-    height: 20% !important;
-}
-
-@keyframes eqBounce {
-    0%, 100% { transform: scaleY(0.4); }
-    50% { transform: scaleY(1); }
-}
-
-.mute-btn, .play-pause-btn {
-    border-radius: 50%;
-    border: 2px solid #22d3ee;
-    background: rgba(34, 211, 238, 0.12);
-    color: #22d3ee;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: all 0.25s;
-    box-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
-}
-
-.mute-btn {
-    width: 36px;
-    height: 36px;
-    opacity: 0.8;
-}
-
-.play-pause-btn {
-    width: 42px;
-    height: 42px;
-    box-shadow: 0 0 18px rgba(34, 211, 238, 0.7);
-}
-
-.mute-btn:hover, .play-pause-btn:hover {
-    box-shadow: 0 0 24px rgba(34, 211, 238, 0.9);
-    transform: scale(1.08);
-}
-
+/* Плоский цвет прогресс-бара, как в макете */
 .player-progress {
     width: 100%;
     height: 3px;
@@ -394,14 +63,13 @@ body {
 .progress-bar {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #22d3ee, #a855f7);
+    background: #00e5ff;
     border-radius: 10px;
     transition: width 0.3s;
-    box-shadow: 0 0 8px rgba(34, 211, 238, 0.8);
+    box-shadow: 0 0 8px #00e5ff;
 }
 
-@media (max-width: 400px) {
-    .brand-title { font-size: 38px; }
-    .station-btn { padding: 16px 22px; }
-    .station-name { font-size: 17px; }
+/* 3. Сетка — ровно 0.15 прозрачности */
+.grid-bg {
+    opacity: 0.15;
 }
