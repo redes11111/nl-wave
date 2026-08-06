@@ -1,17 +1,163 @@
-/* 1. Более точный alpha для glow */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: #05050c;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Сетка теперь видна по всему экрану */
+.grid-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        linear-gradient(to right, rgba(168, 85, 247, 0.45) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(34, 211, 238, 0.35) 1px, transparent 1px);
+    background-size: 46px 46px;
+    transform: perspective(600px) rotateX(60deg) scale(1.8);
+    transform-origin: top;
+    opacity: 0.18;
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px 24px 150px;
+    text-align: center;
+}
+
+/* Логотип наушников */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.headphones-svg {
+    filter: drop-shadow(0 0 18px rgba(34, 211, 238, 0.75)) drop-shadow(0 0 14px rgba(168, 85, 247, 0.6));
+    animation: pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { filter: drop-shadow(0 0 18px rgba(34, 211, 238, 0.75)) drop-shadow(0 0 14px rgba(168, 85, 247, 0.6)); }
+    50% { filter: drop-shadow(0 0 28px rgba(34, 211, 238, 0.95)) drop-shadow(0 0 22px rgba(168, 85, 247, 0.85)); }
+}
+
+/* Заголовок — ярче */
+.brand-title {
+    font-size: 46px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #38e8ff, #b366ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    filter:
+        drop-shadow(0 0 18px rgba(56, 232, 255, 0.9))
+        drop-shadow(0 0 30px rgba(179, 102, 255, 0.7))
+        drop-shadow(0 0 45px rgba(179, 102, 255, 0.4));
+}
+
+.tagline {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 40px;
+    color: #cbd5e1;
+}
+
+/* Кнопки станций */
+.stations-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
 .station-btn {
+    position: relative;
+    background: rgba(15, 15, 25, 0.6);
+    border: 2px solid #22d3ee;
+    border-radius: 50px;
+    padding: 18px 26px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease;
+
     box-shadow:
         0 0 15px rgba(0, 229, 255, 0.45),
         inset 0 0 10px rgba(0, 229, 255, 0.2);
+
+    opacity: 0;
+    transform: translateY(24px);
+    animation: btnAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--delay) * 0.15s + 0.2s);
+}
+
+@keyframes btnAppear {
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .station-btn[data-color="purple"] {
+    border-color: #a855f7;
     box-shadow:
         0 0 15px rgba(170, 0, 255, 0.45),
         inset 0 0 10px rgba(170, 0, 255, 0.2);
 }
 
-/* 2. Плеер — точные размеры из макета */
+.station-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+    width: 34px;
+}
+
+.station-name {
+    flex: 1;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+    padding-right: 34px; /* компенсируем ширину иконки, чтобы текст был по центру кнопки */
+}
+
+.station-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 0 35px rgba(34, 211, 238, 0.7),
+        inset 0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+.station-btn[data-color="purple"]:hover {
+    box-shadow:
+        0 0 35px rgba(170, 0, 255, 0.7),
+        inset 0 0 15px rgba(170, 0, 255, 0.3);
+}
+
+.station-btn.playing {
+    background: rgba(34, 211, 238, 0.12);
+}
+
+.station-btn:active {
+    transform: translateY(-1px) scale(0.99);
+}
+
+/* === МИНИ-ПЛЕЕР === */
 .mini-player {
     position: fixed;
     bottom: 20px;
@@ -19,10 +165,10 @@
     transform: translateX(-50%) translateY(140px);
     width: 90%;
     max-width: 400px;
-    border-radius: 20px;
     background: rgba(18, 18, 28, 0.75);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     padding: 14px 16px;
     z-index: 100;
@@ -30,6 +176,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-wrap: wrap;
     transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
@@ -50,7 +197,93 @@
     justify-content: center;
 }
 
-/* Плоский цвет прогресс-бара, как в макете */
+.player-cover svg {
+    width: 22px;
+    height: 22px;
+    fill: #0a0e1a;
+}
+
+.player-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.track-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.track-status {
+    font-size: 12px;
+    color: #7dd3fc;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.equalizer {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 22px;
+}
+
+.equalizer span {
+    width: 3.5px;
+    background: linear-gradient(to top, #22d3ee, #a855f7);
+    border-radius: 2px;
+    animation: eqBounce 0.8s ease-in-out infinite;
+}
+
+.equalizer span:nth-child(1) { height: 30%; animation-delay: 0s; }
+.equalizer span:nth-child(2) { height: 100%; animation-delay: 0.15s; }
+.equalizer span:nth-child(3) { height: 60%; animation-delay: 0.3s; }
+.equalizer span:nth-child(4) { height: 80%; animation-delay: 0.45s; }
+
+.equalizer.paused span {
+    animation-play-state: paused;
+    height: 20% !important;
+}
+
+@keyframes eqBounce {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1); }
+}
+
+.mute-btn, .play-pause-btn {
+    border-radius: 50%;
+    border: 2px solid #22d3ee;
+    background: rgba(34, 211, 238, 0.12);
+    color: #22d3ee;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s;
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+}
+
+.mute-btn {
+    width: 36px;
+    height: 36px;
+    opacity: 0.8;
+}
+
+.play-pause-btn {
+    width: 42px;
+    height: 42px;
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.7);
+}
+
+.mute-btn:hover, .play-pause-btn:hover {
+    box-shadow: 0 0 24px rgba(34, 211, 238, 0.9);
+    transform: scale(1.08);
+}
+
 .player-progress {
     width: 100%;
     height: 3px;
@@ -69,7 +302,8 @@
     box-shadow: 0 0 8px #00e5ff;
 }
 
-/* 3. Сетка — ровно 0.15 прозрачности */
-.grid-bg {
-    opacity: 0.15;
+@media (max-width: 400px) {
+    .brand-title { font-size: 38px; }
+    .station-btn { padding: 16px 22px; }
+    .station-name { font-size: 17px; }
 }
