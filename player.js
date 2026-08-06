@@ -7,8 +7,18 @@ const equalizer = document.getElementById("equalizer");
 const playPauseBtn = document.getElementById("playPauseBtn");
 const pauseIcon = document.getElementById("pauseIcon");
 const playIcon = document.getElementById("playIcon");
+const volIcon = document.getElementById("volIcon");
+const muteIcon = document.getElementById("muteIcon");
 
 const radios = {
+    game: {
+        name: "GAME ON",
+        url: "https://radiorecord.hostingradio.ru/phonk96.aacp"
+    },
+    chill: {
+        name: "CHILL FLOW",
+        url: "https://radiorecord.hostingradio.ru/lofi96.aacp"
+    },
     new: {
         name: "Новое Радио",
         url: "https://stream.newradio.ru/moscow.novoe.aacp"
@@ -54,6 +64,13 @@ function togglePlayPause() {
         audio.pause();
         setPauseState(true);
     }
+}
+
+function toggleMute() {
+    audio.muted = !audio.muted;
+    volIcon.style.display = audio.muted ? "none" : "block";
+    muteIcon.style.display = audio.muted ? "block" : "none";
+    console.log(audio.muted ? "🔇 Звук выключен" : "🔊 Звук включен");
 }
 
 function setPauseState(isPaused) {
